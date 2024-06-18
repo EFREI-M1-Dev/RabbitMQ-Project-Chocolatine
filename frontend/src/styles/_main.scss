@@ -1,0 +1,31 @@
+@import "fonts/font";
+@import "variables";
+
+
+// Global styles
+html {
+  background-color : $color-bg;
+}
+
+* {
+  box-sizing : border-box;
+}
+
+html, body, #root {
+  margin      : 0;
+  padding     : 0;
+}
+
+html, body, #root {
+  height : 100%;
+}
+
+#root {
+  display        : flex;
+  flex-direction : column;
+  padding-top    : 7em; // Height of the header
+}
+
+::-webkit-scrollbar {
+  width : 0;
+}

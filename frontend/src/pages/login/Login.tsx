@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const Login: React.FC = () => {
+const LoginPage = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
@@ -12,7 +12,7 @@ const Login: React.FC = () => {
         };
 
         // Exemple : Envoi du message à RabbitMQ
-        await sendMessageToRabbitMQ(message);
+        // await sendMessageToRabbitMQ(message);
 
         // Réinitialisation des champs après la connexion
         setUsername('');
@@ -43,4 +43,4 @@ const Login: React.FC = () => {
     );
 };
 
-export default Login;
+export default LoginPage;

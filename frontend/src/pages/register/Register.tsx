@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const Register: React.FC = () => {
+const RegisterPage = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
@@ -12,7 +12,7 @@ const Register: React.FC = () => {
         };
 
         // Exemple : Envoi du message à RabbitMQ
-        await sendMessageToRabbitMQ(message);
+        // await sendMessageToRabbitMQ(message);
 
         // Réinitialisation des champs après l'inscription
         setUsername('');
@@ -43,4 +43,4 @@ const Register: React.FC = () => {
     );
 };
 
-export default Register;
+export default RegisterPage;
