@@ -1,20 +1,33 @@
-import {Outlet, useNavigation} from 'react-router-dom';
-import Header from './components/Header/Header';
-import Footer from './components/Footer/Footer';
-import './styles/_main.scss';
+import { useEffect, useState } from 'react';
+import { io } from 'socket.io-client';
+import HomePage from './pages/home/Home';
+import LoginPage from './pages/login/Login';
 
 const App = () => {
-    const navigation = useNavigation();
+    const [userId, setUserId] = useState<string | null>(null);
 
-    const isLoading = navigation.state === 'loading';
+    useEffect(() => {
+        const storedUserId = localStorage.getItem('userId');
+        if (storedUserId) {
+            setUserId(storedUserId);
+        } else {
+            const socket = io('http://localhost:5000');
+            socket.on('connect', () => {
+                socket.emit('request user id');
+            });
+            socket.on('user id', (id) => {
+                localStorage.setItem('userId', id);
+                setUserId(id);
+                socket.disconnect();
+            });
+        }
+    }, []);
 
-    return (
-        <>
-            <Header/>
-            {isLoading ? <div>Loading...</div> : <Outlet/>}
-            <Footer/>
-        </>
-    );
-}
+    if (!userId) {
+        return <LoginPage onLogin={setUserId} />;
+    }
+
+    return <HomePage userId={userId} />;
+};
 
 export default App;

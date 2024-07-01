@@ -4,7 +4,9 @@
 
 // Global styles
 html {
-  background-color : $color-bg;
+  background-image: url("../public/cp_background.jpg");
+  background-size: cover;
+  font-family: 'Montserrat Light', sans-serif;
 }
 
 * {
@@ -28,4 +30,8 @@ html, body, #root {
 
 ::-webkit-scrollbar {
   width : 0;
+}
+
+h2 {
+  font-size: 32px;
 }

@@ -1,0 +1,101 @@
+@import "src/styles/variables";
+
+.container {
+  width            : 80%;
+  height           : 80%;
+  position         : absolute;
+  top              : 50%;
+  left             : 50%;
+  transform        : translate(-50%, -50%);
+  display          : flex;
+}
+
+.chatContainer {
+  width            : 30%;
+  height           : 100%;
+  background-color : rgba(10, 132, 207, 0.93);
+  display          : flex;
+  flex-direction   : column;
+  gap              : 1em;
+  padding          : 1em;
+  border-radius    : 10px 0 0 10px;
+  border           : 10px solid #003265;
+
+  h2 {
+    color: black;
+    text-align : center;
+    text-transform: uppercase;
+  }
+}
+
+.messageContainer {
+  width            : 70%;
+  height           : 100%;
+  background-color : rgba(10, 132, 207, 0.93);
+  display          : flex;
+  flex-direction   : column;
+  gap              : 1em;
+  padding          : 1em;
+  border-radius    : 0 10px 10px 0;
+  border           : 10px solid #003265;
+  justify-content  : space-between;
+
+  h2 {
+    color: black;
+    text-align : center;
+    text-transform: uppercase;
+  }
+
+  .messageList {
+    display          : flex;
+    flex-direction   : column;
+    gap              : 1em;
+    padding          : 1em;
+    overflow-y       : scroll;
+    border-radius    : 10px;
+    color            : white;
+    height           : 70%;
+
+    .message {
+      padding          : 0.5em;
+      border-radius    : 10px;
+      background-color : rgba(255, 255, 255, 0.75);
+      color            : black;
+
+      &_right {
+        align-self       : flex-end;
+      }
+
+      &_left {
+        align-self       : flex-start;
+      }
+    }
+  }
+
+
+  .messageInput {
+    display          : flex;
+    gap              : 1em;
+    padding          : 1em;
+
+
+    input {
+      width            : 90%;
+      padding          : 1em;
+      border-radius    : 10px;
+      background-color : #003265;
+      color            : white;
+    }
+
+    button {
+      width            : 10%;
+      padding          : 1em;
+      border-radius    : 10px;
+      background-color : #003265;
+      color            : white;
+      font-weight      : bold;
+      text-transform   : uppercase;
+    }
+  }
+}
+

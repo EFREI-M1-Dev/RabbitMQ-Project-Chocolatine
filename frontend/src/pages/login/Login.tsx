@@ -1,44 +1,26 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import styles from "../login/_Login.module.scss";
 
-const LoginPage = () => {
+const LoginPage = ({ onLogin }: { onLogin: (userId: string) => void }) => {
     const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
 
-    const handleLogin = async () => {
-        // Logique pour envoyer les données de connexion à RabbitMQ
-        const message = {
-            username,
-            password
-        };
-
-        // Exemple : Envoi du message à RabbitMQ
-        // await sendMessageToRabbitMQ(message);
-
-        // Réinitialisation des champs après la connexion
-        setUsername('');
-        setPassword('');
+    const handleLogin = () => {
+        const userId = username || `user_${Date.now()}`;
+        localStorage.setItem('userId', userId);
+        localStorage.setItem('username', username);
+        onLogin(userId);
     };
 
     return (
-        <div>
-            <h2>Login</h2>
-            <form onSubmit={handleLogin}>
-                <input
-                    type="text"
-                    placeholder="Username"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                    required
-                />
-                <input
-                    type="password"
-                    placeholder="Password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    required
-                />
-                <button type="submit">Login</button>
-            </form>
+        <div className={styles.container}>
+            <h1>Entrer un pseudonyme</h1>
+            <input
+                type="text"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                placeholder="Nom d'utilisateur"
+            />
+            <button onClick={handleLogin}>Rejoindre la discussion</button>
         </div>
     );
 };
