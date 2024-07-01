@@ -54,7 +54,7 @@ const connectToRabbitMQ = () => {
                         if (!message || message.content.toString().trim() === '') return;
                         const msgContent = message.content.toString();
                         consola.info(`Consumed message from RabbitMQ: ${msgContent}`);
-                        socket.emit('chat message', msgContent);
+                        socket.emit('chat message', msgContent); // Diffuser le message à tous les clients dans la "room" de cet utilisateur
                     },
                     { noAck: true },
                     (error2, ok) => {
